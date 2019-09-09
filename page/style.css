@@ -1,0 +1,56 @@
+.input-group{
+    margin-bottom: 0px !important;
+}
+
+.form-control{
+    background-color: #FFEAB0;
+    color: black;
+    margin: 0px;
+}
+
+.form-control:focus{
+    background-color:#FFEAB0;
+    color:black;
+    margin: 0px;
+}
+.h{
+    background-color:#DBB120;   
+    margin: 0%;
+    padding: 15px;
+    color:wheat;
+    font-family: 'Raleway', sans-serif;
+    vertical-align: middle;
+    /*
+    font-family: 'Roboto', sans-serif;
+    */
+}
+.Canvas{ 
+    height: 200px;
+}
+
+.btn-my{
+    margin-left: 40px;
+    background-color: #DB8620;
+    border-color:#DB8620;
+    height: fit-content;
+    width: fit-content;
+    color:white;
+}
+.btn-my:hover{
+    background-color: #DB7920;
+    border-color:#DB7920;
+    color:white;
+}
+.btn-my:focus{
+    background-color: #DB6D20;
+    border-color:#DB6D20;
+    color:white;
+}
+
+.terminal{
+    background-color: black;
+    color:white;
+
+    height: 80px;
+}
+
