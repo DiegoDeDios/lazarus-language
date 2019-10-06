@@ -9,13 +9,24 @@
 ("=")  return 'ASSIGN'  
 ("+") 	 return 'PLUS' 
 ("-") 	 return 'MINUS' 
-("*")    return 'TIMES' 
+("*")    return 'TIMES'
+("^")    return 'POWER' 
 ("/")    return 'DIVIDE'
+("!")    return 'FACTORIAL'
+("(")    return 'OPPARENTHESIS'
+(")")    return 'CLPARENTHESIS'
+("PI")   return 'PI'
 (";")	 return 'ENDOFSTMT' 
 [0-9]+ return 'INUM' 
 .	return 'INVALID'
 (\n)	return 'LINE'
 /lex
+
+%left PLUS MINUS
+%left TIMES DIVIDE
+%left POWER
+%right FACTORIAL
+%left UMINUS
 
 %start prog
 
@@ -35,13 +46,18 @@ stmt: ID ASSIGN expr { symtable[$1] = $3; }
         | PRINT ID {console.log(symtable[$2]);}
 	| DRAW FIGURE {console.log("Placeholder, hacer dibujacion de:", $2, "aqui");}
         ;
-expr: val PLUS expr { $$+=$3; }
-        | val MINUS expr { $$-=$3; }
-        | val TIMES expr { $$*=$3; }
-        | val DIVIDE expr { $$ /=$3; }
-        | val { $$=Number(yytext); }
-        ;
-val:      ID { $$ = symtable[$1]; } 
+expr:   expr PLUS expr { $$=$1+$3; }
+        | expr MINUS expr { $$=$1-$3; }
+        | MINUS e %prec UMINUS {$$ = -$2;}
+        | expr TIMES expr { $$=$1*$3; }
+        | expr DIVIDE expr { $$ =$1/$3; }
+        | expr POWER expr { $$ = Math.pow($1, $3);}
+        | expr FACTORIAL {{
+          $$ = (function fact (n) { return n==0 ? 1 : fact(n-1) * n })($1);
+        }}
+        | OPPARENTHESIS expr CLPARENTHESIS {$$ = $2;}
+        | PI {$$=Math.PI;}
+        | ID { $$ = symtable[$1]; } 
         | INUM { $$ = Number(yytext); } 
         ;
 

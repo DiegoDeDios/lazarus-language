@@ -72,12 +72,12 @@
   }
 */
 var Parser = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,8,13,14],$V1=[2,3],$V2=[1,4],$V3=[2,6],$V4=[1,7],$V5=[1,8],$V6=[1,9],$V7=[1,20],$V8=[1,21],$V9=[9,17,18,19,20];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,8,13,14],$V1=[2,3],$V2=[1,4],$V3=[2,6],$V4=[1,7],$V5=[1,8],$V6=[1,9],$V7=[1,22],$V8=[1,19],$V9=[1,20],$Va=[1,21],$Vb=[1,23],$Vc=[1,24],$Vd=[1,25],$Ve=[1,26],$Vf=[1,27],$Vg=[1,28],$Vh=[1,29],$Vi=[9,16,17,19,20,21,22,24],$Vj=[9,16,17,24],$Vk=[9,16,17,19,20,24];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"prog":3,"dcls":4,"stmts":5,"dcl":6,"INTDCL":7,"ID":8,"ENDOFSTMT":9,"stmt":10,"ASSIGN":11,"expr":12,"PRINT":13,"DRAW":14,"FIGURE":15,"val":16,"PLUS":17,"MINUS":18,"TIMES":19,"DIVIDE":20,"INUM":21,"$accept":0,"$end":1},
-terminals_: {2:"error",7:"INTDCL",8:"ID",9:"ENDOFSTMT",11:"ASSIGN",13:"PRINT",14:"DRAW",15:"FIGURE",17:"PLUS",18:"MINUS",19:"TIMES",20:"DIVIDE",21:"INUM"},
-productions_: [0,[3,2],[4,2],[4,0],[6,3],[5,3],[5,0],[10,3],[10,2],[10,2],[12,3],[12,3],[12,3],[12,3],[12,1],[16,1],[16,1]],
+symbols_: {"error":2,"prog":3,"dcls":4,"stmts":5,"dcl":6,"INTDCL":7,"ID":8,"ENDOFSTMT":9,"stmt":10,"ASSIGN":11,"expr":12,"PRINT":13,"DRAW":14,"FIGURE":15,"PLUS":16,"MINUS":17,"e":18,"TIMES":19,"DIVIDE":20,"POWER":21,"FACTORIAL":22,"OPPARENTHESIS":23,"CLPARENTHESIS":24,"PI":25,"INUM":26,"$accept":0,"$end":1},
+terminals_: {2:"error",7:"INTDCL",8:"ID",9:"ENDOFSTMT",11:"ASSIGN",13:"PRINT",14:"DRAW",15:"FIGURE",16:"PLUS",17:"MINUS",18:"e",19:"TIMES",20:"DIVIDE",21:"POWER",22:"FACTORIAL",23:"OPPARENTHESIS",24:"CLPARENTHESIS",25:"PI",26:"INUM"},
+productions_: [0,[3,2],[4,2],[4,0],[6,3],[5,3],[5,0],[10,3],[10,2],[10,2],[12,3],[12,3],[12,2],[12,3],[12,3],[12,3],[12,2],[12,3],[12,1],[12,1],[12,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -96,30 +96,44 @@ case 9:
 console.log("Placeholder, hacer dibujacion de:", $$[$0], "aqui");
 break;
 case 10:
- this.$+=$$[$0]; 
+ this.$=$$[$0-2]+$$[$0]; 
 break;
 case 11:
- this.$-=$$[$0]; 
+ this.$=$$[$0-2]-$$[$0]; 
 break;
 case 12:
- this.$*=$$[$0]; 
+this.$ = -$$[$0];
 break;
 case 13:
- this.$ /=$$[$0]; 
+ this.$=$$[$0-2]*$$[$0]; 
 break;
 case 14:
- this.$=Number(yytext); 
+ this.$ =$$[$0-2]/$$[$0]; 
 break;
 case 15:
- this.$ = symtable[$$[$0]]; 
+ this.$ = Math.pow($$[$0-2], $$[$0]);
 break;
 case 16:
+
+          this.$ = (function fact (n) { return n==0 ? 1 : fact(n-1) * n })($$[$0-1]);
+        
+break;
+case 17:
+this.$ = $$[$0-1];
+break;
+case 18:
+this.$=Math.PI;
+break;
+case 19:
+ this.$ = symtable[$$[$0]]; 
+break;
+case 20:
  this.$ = Number(yytext); 
 break;
 }
 },
-table: [o($V0,$V1,{3:1,4:2,6:3,7:$V2}),{1:[3]},{1:$V3,5:5,8:$V4,10:6,13:$V5,14:$V6},o($V0,$V1,{6:3,4:10,7:$V2}),{8:[1,11]},{1:[2,1]},{9:[1,12]},{11:[1,13]},{8:[1,14]},{15:[1,15]},o($V0,[2,2]),{9:[1,16]},{1:$V3,5:17,8:$V4,10:6,13:$V5,14:$V6},{8:$V7,12:18,16:19,21:$V8},{9:[2,8]},{9:[2,9]},o([1,7,8,13,14],[2,4]),{1:[2,5]},{9:[2,7]},{9:[2,14],17:[1,22],18:[1,23],19:[1,24],20:[1,25]},o($V9,[2,15]),o($V9,[2,16]),{8:$V7,12:26,16:19,21:$V8},{8:$V7,12:27,16:19,21:$V8},{8:$V7,12:28,16:19,21:$V8},{8:$V7,12:29,16:19,21:$V8},{9:[2,10]},{9:[2,11]},{9:[2,12]},{9:[2,13]}],
-defaultActions: {5:[2,1],14:[2,8],15:[2,9],17:[2,5],18:[2,7],26:[2,10],27:[2,11],28:[2,12],29:[2,13]},
+table: [o($V0,$V1,{3:1,4:2,6:3,7:$V2}),{1:[3]},{1:$V3,5:5,8:$V4,10:6,13:$V5,14:$V6},o($V0,$V1,{6:3,4:10,7:$V2}),{8:[1,11]},{1:[2,1]},{9:[1,12]},{11:[1,13]},{8:[1,14]},{15:[1,15]},o($V0,[2,2]),{9:[1,16]},{1:$V3,5:17,8:$V4,10:6,13:$V5,14:$V6},{8:$V7,12:18,17:$V8,23:$V9,25:$Va,26:$Vb},{9:[2,8]},{9:[2,9]},o([1,7,8,13,14],[2,4]),{1:[2,5]},{9:[2,7],16:$Vc,17:$Vd,19:$Ve,20:$Vf,21:$Vg,22:$Vh},{18:[1,30]},{8:$V7,12:31,17:$V8,23:$V9,25:$Va,26:$Vb},o($Vi,[2,18]),o($Vi,[2,19]),o($Vi,[2,20]),{8:$V7,12:32,17:$V8,23:$V9,25:$Va,26:$Vb},{8:$V7,12:33,17:$V8,23:$V9,25:$Va,26:$Vb},{8:$V7,12:34,17:$V8,23:$V9,25:$Va,26:$Vb},{8:$V7,12:35,17:$V8,23:$V9,25:$Va,26:$Vb},{8:$V7,12:36,17:$V8,23:$V9,25:$Va,26:$Vb},o($Vi,[2,16]),o($Vi,[2,12]),{16:$Vc,17:$Vd,19:$Ve,20:$Vf,21:$Vg,22:$Vh,24:[1,37]},o($Vj,[2,10],{19:$Ve,20:$Vf,21:$Vg,22:$Vh}),o($Vj,[2,11],{19:$Ve,20:$Vf,21:$Vg,22:$Vh}),o($Vk,[2,13],{21:$Vg,22:$Vh}),o($Vk,[2,14],{21:$Vg,22:$Vh}),o([9,16,17,19,20,21,24],[2,15],{22:$Vh}),o($Vi,[2,17])],
+defaultActions: {5:[2,1],14:[2,8],15:[2,9],17:[2,5]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -611,26 +625,36 @@ case 5:return 8
 break;
 case 6:return 11  
 break;
-case 7:return 17 
+case 7:return 16 
 break;
-case 8:return 18 
+case 8:return 17 
 break;
-case 9:return 19 
+case 9:return 19
 break;
-case 10:return 20
+case 10:return 21 
 break;
-case 11:return 9 
+case 11:return 20
 break;
-case 12:return 21 
+case 12:return 22
 break;
-case 13:return 'INVALID'
+case 13:return 23
 break;
-case 14:return 'LINE'
+case 14:return 24
+break;
+case 15:return 25
+break;
+case 16:return 9 
+break;
+case 17:return 26 
+break;
+case 18:return 'INVALID'
+break;
+case 19:return 'LINE'
 break;
 }
 },
-rules: [/^(?:(\s+))/,/^(?:(declara)\b)/,/^(?:(dibuja)\b)/,/^(?:(circulo|cuadrado|estrella|triangulo)\b)/,/^(?:(imprime|escribe)\b)/,/^(?:[a-e]|[g-h]|[j-o]|[q-z]\b)/,/^(?:(=))/,/^(?:(\+))/,/^(?:(-))/,/^(?:(\*))/,/^(?:(\/))/,/^(?:(;))/,/^(?:[0-9]+)/,/^(?:.)/,/^(?:(\n))/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],"inclusive":true}}
+rules: [/^(?:(\s+))/,/^(?:(declara)\b)/,/^(?:(dibuja)\b)/,/^(?:(circulo|cuadrado|estrella|triangulo)\b)/,/^(?:(imprime|escribe)\b)/,/^(?:[a-e]|[g-h]|[j-o]|[q-z]\b)/,/^(?:(=))/,/^(?:(\+))/,/^(?:(-))/,/^(?:(\*))/,/^(?:(\^))/,/^(?:(\/))/,/^(?:(!))/,/^(?:(\())/,/^(?:(\)))/,/^(?:(PI))/,/^(?:(;))/,/^(?:[0-9]+)/,/^(?:.)/,/^(?:(\n))/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"inclusive":true}}
 });
 return lexer;
 })();
