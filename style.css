@@ -1,0 +1,75 @@
+.navbar {
+    background-color: rgb(32, 150, 219);
+    font-family: 'Raleway', sans-serif;
+    height: 10vh;
+}
+
+@media (max-height: 692px) {
+    .navbar {
+        height: 70px;
+    }
+}
+
+.navbar h1 {
+    color: white;
+}
+
+.navbar-btn {
+    background-color: rgb(32, 82, 219);
+    border-color: rgb(32, 150, 219);
+    height: 50px;
+    width: fit-content;
+    color: white;
+    border-radius: 8px;
+}
+
+.navbar-btn:hover {
+    background-color: rgba(78, 115, 218, 0.795);
+}
+
+.navbar-btn:focus {
+    outline: none;
+}
+
+.title,
+.button-area {
+    width: 50vw;
+}
+
+.button-area {
+    text-align: center;
+}
+
+.canvas {
+    height: 90vh;
+    width: 100%;
+    background-color: white;
+    padding: 0; 
+}
+
+.editor {
+    background-color: rgb(23, 27, 44);
+    color: rgb(192, 191, 191);
+    height: 70vh;
+    padding: 2% 2% 2% 2%;
+    border-color: rgb(23, 27, 44);
+    resize: none;
+}
+
+.editor:focus {
+    outline: none;
+}
+
+.terminal {
+    background-color: black;
+    color: white;
+    height: 20vh;
+    padding: 1% 1% 1% 1%;
+    color: lime;
+    border-color: black;
+    resize: none;
+}
+
+.terminal:focus {
+    outline: none;
+}

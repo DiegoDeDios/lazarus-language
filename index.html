@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <title>Lazarus</title>
+</head>
+
+<body>
+    <nav class="navbar container-fluid">
+        <div class="row">
+            <div class="col-6 title">
+                <h1>Lazarus</h1>
+            </div>
+            <div class="col-6 button-area container-fluid">
+                <div class="row">
+                    <div class="col-3">
+                        <button class="navbar-btn" id="ejecutar">EJECUTAR ►</button>
+                    </div>
+                    <div class="col-3">
+                        <button class="navbar-btn" id="limpiar">LIMPIAR</button>
+                    </div>
+                    <div class="col-3">
+                        <button class="navbar-btn" id="guardar">GUARDAR</button>
+                    </div>
+                    <div class="col-3">
+                        <button class="navbar-btn" id="cargar">CARGAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row no-padding">
+            <div class="col-6 canvas" id="canvasArea">
+
+            </div>
+            <div class="col-6 container-fluid">
+                <div class="row">
+                    <textarea class="editor container-fluid" id="editor"
+                        placeholder="Empieza tu código aquí..."></textarea>
+                </div>
+                <div class="row consola">
+                    <textarea class="terminal container-fluid" id="terminal" readonly
+                        placeholder="Aquí estará el texto analizado...">terminal$</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script src="scripts/p5.js"></script>
+    <script src="scripts/p5.dom.js"></script>
+    <script src="scripts/objects.js"></script>
+    <script src="scripts/canvas.js"></script>
+    <script src="scripts/controller.js"></script>
+</body>
+
+</html>
